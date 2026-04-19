@@ -6,8 +6,7 @@ public class FixedDepositNIB
     {
         Scanner input=new Scanner(System.in);
 
-        //nepal investment bank fd calc
-        System.out.println("===== NIB Bank FD Program =====");
+        System.out.println(" NIB Bank FD Program ");
 
         System.out.print("how much rupees u want to put: ");
         double money=input.nextDouble();
@@ -31,7 +30,6 @@ public class FixedDepositNIB
         System.out.println("below are results for rates 8 to 12");
         System.out.println("");
 
-        //for 8 percent
         double rate1=(8.0/100)/12;
         double a1=money;
         for(int k=1;k<=totalMonths;k++){
@@ -40,7 +38,6 @@ public class FixedDepositNIB
         double charge1=a1*0.005;
         System.out.println("8%  -> matured: "+a1+" | fee: "+charge1+" | net: "+(a1-charge1));
 
-        //for 9 percent
         double rate2=(9.0/100)/12;
         double a2=money;
         for(int k=1;k<=totalMonths;k++){
@@ -49,7 +46,6 @@ public class FixedDepositNIB
         double charge2=a2*0.005;
         System.out.println("9%  -> matured: "+a2+" | fee: "+charge2+" | net: "+(a2-charge2));
 
-        //for 10 percent
         double rate3=(10.0/100)/12;
         double a3=money;
         for(int k=1;k<=totalMonths;k++){
@@ -58,7 +54,6 @@ public class FixedDepositNIB
         double charge3=a3*0.005;
         System.out.println("10% -> matured: "+a3+" | fee: "+charge3+" | net: "+(a3-charge3));
 
-        //for 11 percent
         double rate4=(11.0/100)/12;
         double a4=money;
         for(int k=1;k<=totalMonths;k++){
@@ -67,7 +62,6 @@ public class FixedDepositNIB
         double charge4=a4*0.005;
         System.out.println("11% -> matured: "+a4+" | fee: "+charge4+" | net: "+(a4-charge4));
 
-        //for 12 percent
         double rate5=(12.0/100)/12;
         double a5=money;
         for(int k=1;k<=totalMonths;k++){
