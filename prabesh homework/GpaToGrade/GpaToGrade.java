@@ -11,7 +11,6 @@ public class GpaToGrade
 
         double gpa=reader.nextDouble();
 
-        //shift decimal out
         int val=(int)(gpa*10);
 
         String result="unknown";
