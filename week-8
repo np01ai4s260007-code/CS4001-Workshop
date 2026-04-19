@@ -1,0 +1,315 @@
+
+
+// =============================================
+// QUESTION 1: Student Class
+// =============================================
+class Student {
+
+    // Attributes of a Student
+    int id;
+    String name;
+    String address;
+    long phoneNumber;
+    static String collegeName = "Itahari International College"; // static = shared by all students
+
+    // -----------------------------------------------
+    // CONSTRUCTOR - runs when we write: new Student(...)
+    // The values inside () are called parameters
+    // -----------------------------------------------
+    Student(int id, String name, String address, long phoneNumber) {
+        this.id          = id;           // "this.id" means the attribute of this object
+        this.name        = name;
+        this.address     = address;
+        this.phoneNumber = phoneNumber;
+    }
+
+    // Method to display student info
+    void displayInfo() {
+        System.out.println("--- Student Info ---");
+        System.out.println("ID           : " + id);
+        System.out.println("Name         : " + name);
+        System.out.println("Address      : " + address);
+        System.out.println("Phone Number : " + phoneNumber);
+        System.out.println("College      : " + collegeName);
+    }
+}
+
+
+// =============================================
+// QUESTION 2: Employee Salary Calculation
+// =============================================
+class Employee {
+
+    double basicSalary;
+
+    // Constructor to set the salary
+    Employee(double basicSalary) {
+        this.basicSalary = basicSalary;
+    }
+
+    // Method that calculates gross salary with 20% bonus
+    // "double" before the method name means it RETURNS a number
+    double calculateGrossSalary() {
+        double bonus       = basicSalary * 20 / 100;  // 20% of salary
+        double grossSalary = basicSalary + bonus;
+        return grossSalary; // send the result back to whoever called this method
+    }
+}
+
+
+// =============================================
+// QUESTION 3: Bank Account System
+// =============================================
+class BankAccount {
+
+    String accountNumber;
+    double balance;
+    String name;
+
+    // Constructor
+    BankAccount(String accountNumber, double balance, String name) {
+        this.accountNumber = accountNumber;
+        this.balance       = balance;
+        this.name          = name;
+    }
+
+    // Method to return the current balance
+    double getBalance() {
+        return balance;
+    }
+
+    // Method to add money
+    void deposit(double amount) {
+        balance = balance + amount;
+        System.out.println("Deposited Rs. " + amount + " | New Balance: Rs. " + balance);
+    }
+
+    // Method to remove money
+    // Returns true if successful, false if not enough balance
+    boolean withdraw(double amount) {
+        if (amount <= balance) {
+            balance = balance - amount;
+            System.out.println("Withdrawn Rs. " + amount + " | New Balance: Rs. " + balance);
+            return true;  // success
+        } else {
+            System.out.println("Not enough balance! Current: Rs. " + balance);
+            return false; // failed
+        }
+    }
+}
+
+
+// =============================================
+// QUESTION 4: Shopping Cart System
+// =============================================
+class ShoppingCart {
+
+    String itemName;
+    double itemPrice;
+    int quantity;
+
+    // Constructor
+    ShoppingCart(String itemName, double itemPrice, int quantity) {
+        this.itemName  = itemName;
+        this.itemPrice = itemPrice;
+        this.quantity  = quantity;
+    }
+
+    // Method to calculate total price (price x quantity)
+    double calculateTotal() {
+        return itemPrice * quantity;
+    }
+
+    // Method to calculate total price after discount
+    double calculateDiscountedTotal(double discountPercent) {
+        double total    = calculateTotal();
+        double discount = total * discountPercent / 100;
+        return total - discount;
+    }
+
+    // Method to display cart details
+    void displayCart() {
+        System.out.println("Item Name  : " + itemName);
+        System.out.println("Item Price : Rs. " + itemPrice);
+        System.out.println("Quantity   : " + quantity);
+        System.out.println("Total      : Rs. " + calculateTotal());
+    }
+}
+
+
+// =============================================
+// QUESTION 5: Electricity Bill Calculation
+// =============================================
+class ElectricityBill {
+
+    String consumerName;
+    int unitsConsumed;
+
+    // Constructor
+    ElectricityBill(String consumerName, int unitsConsumed) {
+        this.consumerName  = consumerName;
+        this.unitsConsumed = unitsConsumed;
+    }
+
+    // Method to calculate bill
+    // First 100 units = Rs. 5 per unit
+    // Remaining units = Rs. 8 per unit
+    double calculateBill() {
+        double bill = 0;
+
+        if (unitsConsumed <= 100) {
+            // All units at Rs. 5
+            bill = unitsConsumed * 5;
+        } else {
+            // First 100 units at Rs. 5
+            bill = 100 * 5;
+            // Remaining units at Rs. 8
+            bill = bill + (unitsConsumed - 100) * 8;
+        }
+
+        return bill;
+    }
+}
+
+
+// =============================================
+// QUESTION 6: Hospital Patient Billing System
+// =============================================
+class Patient {
+
+    String patientName;
+    int age;
+    int daysAdmitted;
+    double dailyCharge;
+
+    // Constructor
+    Patient(String patientName, int age, int daysAdmitted, double dailyCharge) {
+        this.patientName  = patientName;
+        this.age          = age;
+        this.daysAdmitted = daysAdmitted;
+        this.dailyCharge  = dailyCharge;
+    }
+
+    // Method to calculate total bill
+    // If days > 7, give 10% discount
+    double calculateTotalBill() {
+        double totalBill = daysAdmitted * dailyCharge;
+
+        if (daysAdmitted > 7) {
+            double discount = totalBill * 10 / 100; // 10% discount
+            totalBill = totalBill - discount;
+            System.out.println("10% discount applied for long stay!");
+        }
+
+        return totalBill;
+    }
+
+    // Method to display patient details
+    void displayDetails() {
+        System.out.println("Patient Name  : " + patientName);
+        System.out.println("Age           : " + age);
+        System.out.println("Days Admitted : " + daysAdmitted);
+        System.out.println("Daily Charge  : Rs. " + dailyCharge);
+        System.out.println("Total Bill    : Rs. " + calculateTotalBill());
+    }
+}
+
+
+// =============================================
+// MAIN CLASS - This is where the program starts
+// All objects are created and tested here
+// =============================================
+public class Week8_AllTasks {
+
+    public static void main(String[] args) {
+
+        // -----------------------------------------------
+        // QUESTION 1: Student
+        // -----------------------------------------------
+        System.out.println("=================================");
+        System.out.println("  Q1: Student Class             ");
+        System.out.println("=================================");
+
+        // Create student object using constructor
+        Student s1 = new Student(1, "Ram Sharma", "Kathmandu", 9841000001L);
+        s1.displayInfo();
+
+        System.out.println();
+
+        Student s2 = new Student(2, "Sita Thapa", "Pokhara", 9841000002L);
+        s2.displayInfo();
+
+        // -----------------------------------------------
+        // QUESTION 2: Employee Salary
+        // -----------------------------------------------
+        System.out.println("\n=================================");
+        System.out.println("  Q2: Employee Salary            ");
+        System.out.println("=================================");
+
+        Employee emp1 = new Employee(30000);
+        System.out.println("Basic Salary : Rs. " + emp1.basicSalary);
+        System.out.println("Gross Salary : Rs. " + emp1.calculateGrossSalary());
+
+        // -----------------------------------------------
+        // QUESTION 3: Bank Account (ATM)
+        // -----------------------------------------------
+        System.out.println("\n=================================");
+        System.out.println("  Q3: Bank Account (ATM)         ");
+        System.out.println("=================================");
+
+        BankAccount acc1 = new BankAccount("ACC001", 10000, "Ram Sharma");
+        System.out.println("Account: " + acc1.name + " | Balance: Rs. " + acc1.getBalance());
+        acc1.deposit(5000);
+        acc1.withdraw(3000);
+        acc1.withdraw(20000); // this should fail
+
+        // -----------------------------------------------
+        // QUESTION 4: Shopping Cart
+        // -----------------------------------------------
+        System.out.println("\n=================================");
+        System.out.println("  Q4: Shopping Cart              ");
+        System.out.println("=================================");
+
+        ShoppingCart cart1 = new ShoppingCart("Notebook", 150.0, 3);
+        cart1.displayCart();
+        System.out.println("After 10% Festival Discount: Rs. " + cart1.calculateDiscountedTotal(10));
+
+        // -----------------------------------------------
+        // QUESTION 5: Electricity Bill
+        // -----------------------------------------------
+        System.out.println("\n=================================");
+        System.out.println("  Q5: Electricity Bill           ");
+        System.out.println("=================================");
+
+        ElectricityBill bill1 = new ElectricityBill("Hari Prasad", 150);
+        System.out.println("Consumer     : " + bill1.consumerName);
+        System.out.println("Units Used   : " + bill1.unitsConsumed);
+        System.out.println("Total Bill   : Rs. " + bill1.calculateBill());
+
+        ElectricityBill bill2 = new ElectricityBill("Gita Kumari", 80);
+        System.out.println("\nConsumer     : " + bill2.consumerName);
+        System.out.println("Units Used   : " + bill2.unitsConsumed);
+        System.out.println("Total Bill   : Rs. " + bill2.calculateBill());
+
+        // -----------------------------------------------
+        // QUESTION 6: Hospital Patient Billing
+        // -----------------------------------------------
+        System.out.println("\n=================================");
+        System.out.println("  Q6: Hospital Patient Billing   ");
+        System.out.println("=================================");
+
+        // Patient 1 - stayed less than 7 days (no discount)
+        Patient p1 = new Patient("Bikash Rai", 35, 5, 2000);
+        System.out.println("--- Patient 1 ---");
+        p1.displayDetails();
+
+        // Patient 2 - stayed more than 7 days (10% discount)
+        Patient p2 = new Patient("Sunita Gurung", 50, 10, 2000);
+        System.out.println("\n--- Patient 2 ---");
+        p2.displayDetails();
+
+        System.out.println("\n=================================");
+        System.out.println("       All Tasks Done!           ");
+        System.out.println("=================================");
+    }
+}
