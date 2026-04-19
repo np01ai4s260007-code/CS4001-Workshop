@@ -1,34 +1,29 @@
 import java.util.Scanner;
-
 public class ScholarshipCheck
 {
     public static void main(String[] args)
     {
-        Scanner reader=new Scanner(System.in);
-
+        Scanner reader = new Scanner(System.in);
         System.out.print("type your gpa (0.0 to 4.0): ");
-        double point=reader.nextDouble();
+        double point = reader.nextDouble();
 
-        if(point<0){
+        if (point < 0) {
             System.out.println("gpa cannot be below zero");
             return;
         }
-        if(point>4){
+
+        if (point > 4) {
             System.out.println("gpa cannot be above 4");
             return;
         }
 
-
-        if(point>=3.8){
+        if (point >= 3.8) {
             System.out.println("amazing! FULL scholarship unlocked");
-        }
-        else if(point>=3.5){
+        } else if (point >= 3.5) {
             System.out.println("nice! 50 percent scholarship");
-        }
-        else if(point>=3.0){
+        } else if (point >= 3.0) {
             System.out.println("got 25 percent scholarship");
-        }
-        else{
+        } else {
             System.out.println("sorry not qualified for scholarship");
             System.out.println("minimum gpa needed is 3.0");
         }
