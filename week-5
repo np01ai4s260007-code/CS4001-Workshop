@@ -1,0 +1,150 @@
+import java.util.Scanner;
+
+public class Week5_ScenarioQuestions {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // =============================================
+        // SCENARIO Q1: Simple Calculator (Q.7)
+        // Uses while loop to keep calculating until user says no
+        // =============================================
+        System.out.println("=================================");
+        System.out.println("   Scenario 1: Simple Calculator ");
+        System.out.println("=================================");
+
+        // keep is used to control the while loop
+        // if keep = 1, loop continues. if keep = 0, loop stops.
+        int keep = 1;
+
+        while (keep == 1) {
+
+            // Ask for two numbers
+            System.out.print("Enter first number: ");
+            double num1 = scanner.nextDouble();
+
+            System.out.print("Enter second number: ");
+            double num2 = scanner.nextDouble();
+
+            // Ask which operation to do
+            System.out.print("Choose operation (+, -, *, /): ");
+            char operation = scanner.next().charAt(0);
+
+            // Do the calculation based on operation chosen
+            if (operation == '+') {
+                System.out.println("Answer: " + (num1 + num2));
+            } else if (operation == '-') {
+                System.out.println("Answer: " + (num1 - num2));
+            } else if (operation == '*') {
+                System.out.println("Answer: " + (num1 * num2));
+            } else if (operation == '/') {
+                // Cannot divide by zero
+                if (num2 == 0) {
+                    System.out.println("Error! Cannot divide by zero.");
+                } else {
+                    System.out.println("Answer: " + (num1 / num2));
+                }
+            } else {
+                System.out.println("Invalid operation!");
+            }
+
+            // Ask if user wants to calculate again
+            System.out.print("Do you want to calculate again? (1 = Yes, 0 = No): ");
+            keep = scanner.nextInt();
+        }
+
+        System.out.println("Calculator closed.");
+
+        // =============================================
+        // SCENARIO Q2: Nepal Investment Bank FD (Q.10)
+        // Uses while loop to keep doing FD calculations
+        // =============================================
+        System.out.println("\n=================================");
+        System.out.println("  Scenario 2: NIB Fixed Deposit  ");
+        System.out.println("=================================");
+
+        // Processing fee rate is fixed at 0.5%
+        double feeRate = 0.005;
+
+        // keep2 is used to control this while loop
+        int keep2 = 1;
+
+        while (keep2 == 1) {
+
+            // Step 1: Ask for deposit amount (principal)
+            System.out.print("\nEnter deposit amount (minimum Rs. 1000): Rs. ");
+            double principal = scanner.nextDouble();
+
+            // Check minimum deposit rule
+            if (principal < 1000) {
+                System.out.println("Sorry! Minimum deposit is Rs. 1000.");
+            } else {
+
+                // Step 2: Ask for interest rate (must be between 8 and 12)
+                System.out.print("Enter annual interest rate (8 to 12): ");
+                double annualRate = scanner.nextDouble();
+
+                // Check interest rate rule
+                if (annualRate < 8 || annualRate > 12) {
+                    System.out.println("Sorry! Interest rate must be between 8% and 12%.");
+                } else {
+
+                    // Step 3: Ask for duration in years (maximum 5 years)
+                    System.out.print("Enter duration in years (maximum 5): ");
+                    int years = scanner.nextInt();
+
+                    // Check maximum duration rule
+                    if (years < 1 || years > 5) {
+                        System.out.println("Sorry! Duration must be between 1 and 5 years.");
+                    } else {
+
+                        // Step 4: Calculate everything
+
+                        // Convert annual rate to monthly rate
+                        // Example: 12% per year = 12/100/12 = 0.01 per month
+                        double monthlyRate = annualRate / 100 / 12;
+
+                        // Total number of months
+                        int totalMonths = years * 12;
+
+                        // Compound interest formula: A = P * (1 + r)^n
+                        // r = monthly rate, n = total months
+                        double maturityAmount = principal * Math.pow(1 + monthlyRate, totalMonths);
+
+                        // Processing fee = 0.5% of maturity amount
+                        double fee = maturityAmount * feeRate;
+
+                        // Final amount customer receives
+                        double finalAmount = maturityAmount - fee;
+
+                        // Interest earned
+                        double interestEarned = finalAmount - principal;
+
+                        // Step 5: Display the result
+                        System.out.println("\n-----------------------------");
+                        System.out.println("       FD Summary            ");
+                        System.out.println("-----------------------------");
+                        System.out.println("Deposit Amount  : Rs. " + principal);
+                        System.out.println("Annual Rate     : " + annualRate + "%");
+                        System.out.println("Duration        : " + years + " years (" + totalMonths + " months)");
+                        System.out.println("Maturity Amount : Rs. " + (int) maturityAmount);
+                        System.out.println("Processing Fee  : Rs. " + (int) fee);
+                        System.out.println("Interest Earned : Rs. " + (int) interestEarned);
+                        System.out.println("Final Amount    : Rs. " + (int) finalAmount);
+                        System.out.println("-----------------------------");
+                    }
+                }
+            }
+
+            // Ask if user wants to do another FD calculation
+            System.out.print("\nDo you want to calculate another FD? (1 = Yes, 0 = No): ");
+            keep2 = scanner.nextInt();
+        }
+
+        System.out.println("\nThank you for using NIB Fixed Deposit Calculator!");
+        System.out.println("=================================");
+
+        scanner.close();
+    }
+}
