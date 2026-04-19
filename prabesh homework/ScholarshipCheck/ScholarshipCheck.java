@@ -9,7 +9,6 @@ public class ScholarshipCheck
         System.out.print("type your gpa (0.0 to 4.0): ");
         double point=reader.nextDouble();
 
-        //input validation
         if(point<0){
             System.out.println("gpa cannot be below zero");
             return;
@@ -19,11 +18,6 @@ public class ScholarshipCheck
             return;
         }
 
-        //scholarship decide
-        //3.8 and up = full
-        //3.5 to 3.7 = half
-        //3.0 to 3.4 = quarter
-        //below 3.0 = none
 
         if(point>=3.8){
             System.out.println("amazing! FULL scholarship unlocked");
