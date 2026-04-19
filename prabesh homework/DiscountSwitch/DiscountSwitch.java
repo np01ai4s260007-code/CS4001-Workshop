@@ -5,11 +5,9 @@ public class DiscountSwitch
     public static void main(String[] args){
         Scanner reader=new Scanner(System.in);
 
-        //marked price
         System.out.print("give the marked price: ");
         float price=reader.nextFloat();
 
-        //category
         System.out.print("category of item (A/B/C/D): ");
         char type=reader.next().charAt(0);
 
